@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "mLA - moodle Login Assistent",
+  "description": "Moodle is so rischtich kacke, desdewesche repariert diese triviale Erweiterung den ganzen dummen Scheiß 'mim Moodle-Login und Co.",
+  "version": "1.3.0",
+  "icons": {
+    "32": "icons/icon-32.png"
+
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://moodle.tu-darmstadt.de/*",
+        "*://moodle.informatik.tu-darmstadt.de/*",
+        "*://sso.tu-darmstadt.de/*",
+        "*://www.tucan.tu-darmstadt.de/*"
+      ],
+      "js": [
+        "jquery-3.4.1.min.js",
+        "inject.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ]
+}
