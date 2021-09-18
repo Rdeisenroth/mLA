@@ -18,12 +18,11 @@ if (found = $([
   }
 }
 // für alle Submit-Buttons, die automatisch geklickt werden
-else if (found = $([
-  'form[action="login"] input[value="ANMELDEN"]', // für https://sso.tu-darmstadt.de/login?service=https%3A%2F%2Fmoodle.informatik.tu-darmstadt.de%2Flogin%2Findex.php%3FauthCAS%3DCAS&locale=de 
-  'form[action="login"] input[value="LOGIN"]' // für https://sso.tu-darmstadt.de/login?service=https%3A%2F%2Fmoodle.informatik.tu-darmstadt.de%2Flogin%2Findex.php%3FauthCAS%3DCAS&locale=en
-].join())[0]) {
-  //console.log('Gefunden:', found);
-  console.log(`Gefundenn: ${found.a}`);
+else if (location.href.length == 64 
+  && location.href.startsWith('https://sso.tu-darmstadt.de/idp/profile/cas/login?execution=e') 
+  && (found = $('form button'))) {
+  console.log('Gefunden:', found);
+  // console.log(`Gefundenn: ${found.a}`);
   // simuliere Click
   var interval = setInterval(() => {
     if (!localStorage.getItem('password')) {
@@ -39,8 +38,9 @@ else if (found = $([
         $('#password').val(localStorage.getItem('password'));
       }
     }
-    console.log($(found).submit());
-    console.log(found.form.__proto__.submit.apply(found.form, []));
+    // console.log($(found).submit());
+    // console.log(found.form.__proto__.submit.apply(found.form, []));
+    found.click();
     clearInterval(interval);
   }, 200);
 }

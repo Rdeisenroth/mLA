@@ -6,3 +6,6 @@ Ein Tool, das:
 - Außerdem wird automatisch der `Sitzung verlängern` knopf gedrückt, sobald er erscheint.
 ## Aber Warum?
 Weil ich kann und weil es praktisch ist.
+
+## Mitwirkende
+Danke an Kuzip für den Fix für das neue SSO
